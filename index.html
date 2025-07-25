@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My App Hub</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
       --bg: #f0f2f5;
@@ -92,9 +92,9 @@
       background: var(--disabled);
       cursor: not-allowed;
     }
-    .app-icon {
-      width: 48px;
-      height: 48px;
+    .icon {
+      font-size: 2rem;
+      color: var(--accent);
       margin-bottom: 0.5rem;
     }
   </style>
@@ -103,42 +103,49 @@
   <h1>📱 My App Hub</h1>
   <input type="search" id="searchInput" placeholder="Search apps..." oninput="filterApps()" />
   <div class="grid" id="appGrid">
-    <div class="card" data-keywords="dishwasher troubleshooting guide fix">
-      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+    
+    <div class="card" data-keywords="dishwasher troubleshooting step-by-step guide to diagnose dishwasher issues.">
+      <div class="icon"><i class="fas fa-tools"></i></div>
       <h2>Dishwasher Troubleshooting</h2>
       <p>Step-by-step guide to diagnose dishwasher issues.</p>
       <button onclick="location.href='https://grahamm89.github.io/referencetools/dishwasher-troubleshooter.html'">Open App</button>
     </div>
-    <div class="card" data-keywords="detergent concentration titration">
-      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+    
+    <div class="card" data-keywords="detergent concentration tool calculate detergent usage based on titration results.">
+      <div class="icon"><i class="fas fa-vial"></i></div>
       <h2>Detergent Concentration Tool</h2>
       <p>Calculate detergent usage based on titration results.</p>
       <button onclick="location.href='https://grahamm89.github.io/referencetools/detergent-concentration.html'">Open App</button>
     </div>
-    <div class="card" data-keywords="postcode distance closest customer">
-      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+    
+    <div class="card" data-keywords="customer lookup (closest) find the 5 nearest customers based on postcode.">
+      <div class="icon"><i class="fas fa-location-dot"></i></div>
       <h2>Customer Lookup (Closest)</h2>
       <p>Find the 5 nearest customers based on postcode.</p>
       <button onclick="location.href='https://grahamm89.github.io/referencetools/closest-customer.html'">Open App</button>
     </div>
-    <div class="card" data-keywords="product documents reference">
-      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+    
+    <div class="card" data-keywords="product reference tool search product documents and links from sharepoint.">
+      <div class="icon"><i class="fas fa-file-lines"></i></div>
       <h2>Product Reference Tool</h2>
       <p>Search product documents and links from SharePoint.</p>
       <button disabled>Coming Soon</button>
     </div>
-    <div class="card" data-keywords="audit checklist inspection">
-      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+    
+    <div class="card" data-keywords="barchester audit checklist conduct and record site chemical inspections.">
+      <div class="icon"><i class="fas fa-clipboard-check"></i></div>
       <h2>Barchester Audit Checklist</h2>
       <p>Conduct and record site chemical inspections.</p>
       <button disabled>Coming Soon</button>
     </div>
-    <div class="card" data-keywords="diversey support products recommendation">
-      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+    
+    <div class="card" data-keywords="diversey assist suggest products based on issue type and customer type.">
+      <div class="icon"><i class="fas fa-flask"></i></div>
       <h2>Diversey Assist</h2>
       <p>Suggest products based on issue type and customer type.</p>
       <button disabled>Coming Soon</button>
     </div>
+    
   </div>
   <script>
     function filterApps() {
