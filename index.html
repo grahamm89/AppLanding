@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My App Hub</title>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --card: #ffffff;
+      --text: #222;
+      --accent: #0073e6;
+      --disabled: #ccc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121417;
+        --card: #1e2125;
+        --text: #e0e3e6;
+        --accent: #53a2ff;
+        --disabled: #444;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    input[type="search"] {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      width: 100%;
+      max-width: 960px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+    }
+    .card p {
+      flex: 1;
+      font-size: 0.95rem;
+      margin: 0 0 1rem 0;
+      text-align: center;
+    }
+    .card button {
+      padding: 0.6rem 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .card button[disabled] {
+      background: var(--disabled);
+      cursor: not-allowed;
+    }
+    .app-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>📱 My App Hub</h1>
+  <input type="search" id="searchInput" placeholder="Search apps..." oninput="filterApps()" />
+  <div class="grid" id="appGrid">
+    <div class="card" data-keywords="dishwasher troubleshooting guide fix">
+      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+      <h2>Dishwasher Troubleshooting</h2>
+      <p>Step-by-step guide to diagnose dishwasher issues.</p>
+      <button onclick="location.href='https://grahamm89.github.io/referencetools/dishwasher-troubleshooter.html'">Open App</button>
+    </div>
+    <div class="card" data-keywords="detergent concentration titration">
+      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+      <h2>Detergent Concentration Tool</h2>
+      <p>Calculate detergent usage based on titration results.</p>
+      <button onclick="location.href='https://grahamm89.github.io/referencetools/detergent-concentration.html'">Open App</button>
+    </div>
+    <div class="card" data-keywords="postcode distance closest customer">
+      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+      <h2>Customer Lookup (Closest)</h2>
+      <p>Find the 5 nearest customers based on postcode.</p>
+      <button onclick="location.href='https://grahamm89.github.io/referencetools/closest-customer.html'">Open App</button>
+    </div>
+    <div class="card" data-keywords="product documents reference">
+      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+      <h2>Product Reference Tool</h2>
+      <p>Search product documents and links from SharePoint.</p>
+      <button disabled>Coming Soon</button>
+    </div>
+    <div class="card" data-keywords="audit checklist inspection">
+      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+      <h2>Barchester Audit Checklist</h2>
+      <p>Conduct and record site chemical inspections.</p>
+      <button disabled>Coming Soon</button>
+    </div>
+    <div class="card" data-keywords="diversey support products recommendation">
+      <img src="icon-192.png" alt="Diversey logo" class="app-icon" />
+      <h2>Diversey Assist</h2>
+      <p>Suggest products based on issue type and customer type.</p>
+      <button disabled>Coming Soon</button>
+    </div>
+  </div>
+  <script>
+    function filterApps() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      document.querySelectorAll('.card').forEach(card => {
+        const keywords = card.dataset.keywords.toLowerCase();
+        card.style.display = keywords.includes(query) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
